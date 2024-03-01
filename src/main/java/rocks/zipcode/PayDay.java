@@ -7,7 +7,7 @@ package rocks.zipcode;
  * output: "Kris 215.00 10.75 204.25”
  */
 public class PayDay {
-    public static void main(String[] args) {
+    public void main(String[] args) {
         PayDay payday = new PayDay();
 
         StringBuilder outputReport = new StringBuilder();
@@ -32,21 +32,26 @@ public class PayDay {
         }
 
         System.out.println(outputReport.toString());
+
+
     }
-
-
     /**
      * Takes four parameters:
-     *   "Kris", 21.5, 10.0, 0.05
-     *
-     *   Notice the data type of each of the four.
-     * @return a string of the form "Kris 215.00 10.75 204.25”
+     * "Kris", 21.5, 10.0, 0.05
+     * <p>
+     * Notice the data type of each of the four.
      */
-    public String pay(String n, double rate, double worked, double deduct) {
-        return null;
+    public String pay(String n, double hourlyRate, double hoursWorked, double deductionRate) {
+        return result;
+
     }
+        double grossPay = rate * worked;
+        double deduction = grossPay * deduct;
+        double netPay = grossPay - deduction;
+        String result = String.format("%s%.2f%.2f%.2f", n, grossPay, deduction, netPay);
+        return ;
 
-
+}
     /**
      * for the example of how the *pay* method might be used to create a text report
      *
@@ -58,10 +63,10 @@ public class PayDay {
         private double deductionRate;
 
         public TimeCard(String n, double r, double w, double d) {
-            this.name = n;
-            this.hourlyRate = r;
-            this.hoursWorked = w;
-            this.deductionRate = d;
+            this.name = "";
+            this.hourlyRate = hourlyRate;
+            this.hoursWorked = hoursWorked;
+            this.deductionRate = deductionRate;
         }
 
 
@@ -80,14 +85,16 @@ public class PayDay {
         public double getDeductionRate() {
             return deductionRate;
         }
+
+
+
+        public TimeCard[] createRunData() {
+            TimeCard[] cards = {
+                    new TimeCard("Kris", 21.5, 10.0, 0.05),
+                    new TimeCard("Dolio", 23.0, 12.0, 0.05),
+                    new TimeCard("Karen", 22.0, 12.0, 0.05),
+            };
+            return cards;
+        }
     }
 
-    public TimeCard[] createRunData() {
-        TimeCard[] cards = {
-                new TimeCard("Kris", 21.5, 10.0, 0.05),
-                new TimeCard("Dolio", 23.0, 12.0, 0.05),
-                new TimeCard("Karen", 22.0, 12.0, 0.05),
-        };
-        return cards;
-    }
-}
